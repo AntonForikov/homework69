@@ -1,4 +1,4 @@
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import Searcher from './components/Searcher/Searcher';
 
 function App() {
