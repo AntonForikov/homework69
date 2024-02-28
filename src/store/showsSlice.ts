@@ -1,15 +1,21 @@
-import {Show} from '../types';
+import {ShowOption} from '../types';
 import {createSlice} from '@reduxjs/toolkit';
 import {RootState} from '../app/store';
+import {getShowList} from './showsThunk';
 
 interface ShowsState {
   userInput: string
-  shows: Show[]
+  showOptions: ShowOption[]
+  selectedShow: {
+    id: number,
+    label: string
+  } | null
 }
 
 const initialState: ShowsState = {
   userInput: '',
-  shows: []
+  showOptions: [],
+  selectedShow: null
 };
 
 const showSlice = createSlice({
@@ -21,11 +27,16 @@ const showSlice = createSlice({
     },
     clearInput: (state) => {
       state.userInput = '';
-    }
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getShowList.fulfilled, (state, action) => {
+      state.showOptions = action.payload
+    })
   }
 });
 
 export const showReducer = showSlice.reducer;
-export const {userInput, clearInput} = showSlice.actions;
-export const selectUserInput = (state: RootState) => state.show.userInput;
-export const selectShows = (state: RootState) => state.show.shows;
+// export const {userInput, clearInput} = showSlice.actions;
+// export const selectUserInput = (state: RootState) => state.show.userInput;
+export const selectShows = (state: RootState) => state.show.showOptions;

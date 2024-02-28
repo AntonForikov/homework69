@@ -4,3 +4,9 @@ export interface Show {
   summary: string,
   image: string,
 }
+
+export interface ShowOption {
+  id: string,
+  label: string,
+  name: string
+}
