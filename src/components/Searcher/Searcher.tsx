@@ -2,7 +2,7 @@ import {Autocomplete, TextField} from '@mui/material';
 import {selectShows} from '../../store/showsSlice';
 import {useAppDispatch, useAppSelector} from '../../app/hooks';
 import React from 'react';
-import {getShowList} from '../../store/showsThunk';
+import {getShowList, setTargetShow} from '../../store/showsThunk';
 import {useNavigate} from 'react-router-dom';
 import {ShowOption} from '../../types';
 
@@ -10,18 +10,17 @@ import {ShowOption} from '../../types';
 const Searcher = () => {
   const navigate = useNavigate();
   const shows = useAppSelector(selectShows);
-  // const userInput = useAppSelector(selectUserInput);
   const dispatch = useAppDispatch();
 
   const handleInputChange = (_: React.SyntheticEvent<Element, Event>, value: string) => {
-    dispatch(getShowList(value))
+    dispatch(getShowList(value));
   };
 
-  const handleOptionSelect = (_: React.SyntheticEvent<Element, Event>, value: ShowOption | null) => {
+  const handleOptionSelect = async (_: React.SyntheticEvent<Element, Event>, value: ShowOption | null) => {
     if (value !== null) {
-      navigate(`/${value.id}`);
+      navigate(`/shows/${value.id}`);
     }
-  }
+  };
 
   return (
     <div className='w-50 m-auto my-3'>

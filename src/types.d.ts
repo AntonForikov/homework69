@@ -5,6 +5,23 @@ export interface Show {
   image: string,
 }
 
+export interface ResponseFromApi {
+  score: number,
+  show: ShowOption
+}
+
+// export interface ShowOption {
+//   id: string,
+//   label: string,
+//   name: string
+// }
+
+// interface Test {
+//   name: string
+// }
+
+
+
 export interface ShowOption {
   id: string,
   label: string,

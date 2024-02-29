@@ -1,16 +1,16 @@
-import Header from './components/Header/Header';
-import Searcher from './components/Searcher/Searcher';
 import {Route, Routes} from 'react-router-dom';
+import Home from './container/Home/Home';
+import Show from './container/Show/Show';
 
 function App() {
-
   return (
     <>
-      <Header/>
-      <Searcher/>
-      {/*<Routes>*/}
-      {/*  <Route path='/show/:id' element={}  />*/}
-      {/*</Routes>*/}
+      <Routes>
+        <Route path='/' element={<Home/>} >
+          <Route path='shows/:id' element={<Show />}  />
+        </Route>
+        <Route path='*' element={<h1>Not found</h1>}  />
+      </Routes>
 
     </>
   );
