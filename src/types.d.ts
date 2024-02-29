@@ -2,7 +2,7 @@ export interface Show {
   id: number,
   name: string,
   summary: string,
-  image: string,
+  image: {medium: string},
 }
 
 export interface ResponseFromApi {

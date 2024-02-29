@@ -4,7 +4,6 @@ import {useAppDispatch, useAppSelector} from '../../app/hooks';
 import {useParams} from 'react-router-dom';
 import {setTargetShow} from '../../store/showsThunk';
 
-
 const Show: React.FC = () => {
   const showData = useAppSelector(selectTargetShow);
   const {id} = useParams();
@@ -13,15 +12,15 @@ const Show: React.FC = () => {
   useEffect(() => {
     if (id) dispatch(setTargetShow(id));
   }, [id, dispatch]);
-  console.log('Here show element');
 
   return (
-    <section>
-      {/*<img src={showData?.image.medium} alt={showData?.name}/>*/}
-      <img src={showData?.image} alt={showData?.name}/>
-      <div>
+    <section className='d-flex mx-3'>
+      <div><img src={showData?.image.medium} alt={showData?.name}/></div>
+      <div className='ms-3'>
         <h1>{showData?.name}</h1>
-        <p>{showData?.summary}</p>
+        <span
+          dangerouslySetInnerHTML={showData ? {__html: showData.summary}: undefined }
+        />
       </div>
     </section>
   );

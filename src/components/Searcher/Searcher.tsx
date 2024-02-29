@@ -2,7 +2,7 @@ import {Autocomplete, TextField} from '@mui/material';
 import {selectShows} from '../../store/showsSlice';
 import {useAppDispatch, useAppSelector} from '../../app/hooks';
 import React from 'react';
-import {getShowList, setTargetShow} from '../../store/showsThunk';
+import {getShowList} from '../../store/showsThunk';
 import {useNavigate} from 'react-router-dom';
 import {ShowOption} from '../../types';
 
@@ -30,7 +30,7 @@ const Searcher = () => {
         options={shows}
         onInputChange={handleInputChange}
         onChange={handleOptionSelect}
-        renderInput={(params) => <TextField {...params} label='Search for TV shows'></TextField>}>
+        renderInput={(params) => <TextField {...params} label='Search for TV shows'/>}>
       </Autocomplete>
     </div>
   );
