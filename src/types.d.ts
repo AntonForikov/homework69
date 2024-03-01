@@ -10,18 +10,6 @@ export interface ResponseFromApi {
   show: ShowOption
 }
 
-// export interface ShowOption {
-//   id: string,
-//   label: string,
-//   name: string
-// }
-
-// interface Test {
-//   name: string
-// }
-
-
-
 export interface ShowOption {
   id: string,
   label: string,
